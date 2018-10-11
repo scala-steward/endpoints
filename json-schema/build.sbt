@@ -1,8 +1,9 @@
+import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 import EndpointsSettings._
 import LocalCrossProject._
 
 val `json-schema` =
-  crossProject.crossType(CrossType.Pure).in(file("json-schema"))
+  crossProject(JSPlatform, JVMPlatform).crossType(CrossType.Pure).in(file("json-schema"))
     .settings(publishSettings ++ `scala 2.11 to latest`: _*)
     .settings(
       name := "endpoints-algebra-json-schema",
@@ -13,7 +14,7 @@ val `json-schema-js` = `json-schema`.js
 val `json-schema-jvm` = `json-schema`.jvm
 
 lazy val `json-schema-generic` =
-  crossProject.crossType(CrossType.Pure).in(file("json-schema-generic"))
+  crossProject(JSPlatform, JVMPlatform).crossType(CrossType.Pure).in(file("json-schema-generic"))
     .settings(publishSettings ++ `scala 2.11 to 2.12`: _*)
     .settings(
       name := "endpoints-json-schema-generic",
@@ -26,7 +27,7 @@ lazy val `json-schema-generic-js` = `json-schema-generic`.js
 lazy val `json-schema-generic-jvm` = `json-schema-generic`.jvm
 
 lazy val `json-schema-circe` =
-  crossProject.crossType(CrossType.Pure).in(file("json-schema-circe"))
+  crossProject(JSPlatform, JVMPlatform).crossType(CrossType.Pure).in(file("json-schema-circe"))
     .settings(publishSettings ++ `scala 2.11 to 2.12`: _*)
     .settings(
       name := "endpoints-json-schema-circe",
@@ -39,7 +40,7 @@ lazy val `json-schema-circe-js` = `json-schema-circe`.js
 lazy val `json-schema-circe-jvm` = `json-schema-circe`.jvm
 
 lazy val `json-schema-playjson` =
-  crossProject.crossType(CrossType.Pure).in(file("json-schema-playjson"))
+  crossProject(JSPlatform, JVMPlatform).crossType(CrossType.Pure).in(file("json-schema-playjson"))
     .settings(publishSettings ++ `scala 2.11 to 2.12`: _*)
     .settings(
       name := "endpoints-json-schema-playjson",

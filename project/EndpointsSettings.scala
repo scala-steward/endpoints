@@ -1,3 +1,7 @@
+import org.portablescala.sbtplatformdeps.PlatformDepsPlugin.autoImport._
+import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType, _}
+import scalajscrossproject.ScalaJSCrossPlugin.autoImport._
+
 import sbt._
 import sbt.Keys._
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport.toScalaJSGroupID
@@ -31,7 +35,7 @@ object EndpointsSettings {
 
   val `scala 2.11 to latest` = Seq(
     scalaVersion := "2.12.6",
-    crossScalaVersions := Seq("2.11.12", "2.12.6", "2.13.0-M2")
+    crossScalaVersions := Seq("2.11.12", "2.12.6"/*, "2.13.0-M2"*/) // 2.13 is disabled because it is incompatible with Scala.js 0.6.25
   )
 
   val publishSettings = commonSettings ++ Seq(
